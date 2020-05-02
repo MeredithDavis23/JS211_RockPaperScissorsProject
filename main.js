@@ -17,24 +17,29 @@ let rock = "rock"
 
 // the function that will be called by the unit test below
 const rockPaperScissors = (hand1, hand2) => {
+  hand1 = hand1.trim();
+  hand2 = hand2.trim();
+  hand1 = hand1.toLowerCase();
+  hand2 = hand2.toLowerCase();
+  
 if (hand1 === hand2) {
-  console.log("It is a tie!");
+  return "It's a tie!"
 }
-else if (hand1 === rock && hand2 === scissors) || 
+else if (hand1 === rock && hand2 === scissors || 
   hand1 === paper && hand2 === rock || hand1 === scissors && hand2
   === paper) {
-    console.log("Player one rules!")
+    return "Hand one wins!"
   }
-  else if (hand2 === rock && hand1 === scissors) || 
+  else if (hand2 === rock && hand1 === scissors || 
   hand2 === paper && hand1 === rock || hand2 === scissors && hand1
   === paper) {
-    console.log("Player two rox!")
+    return "Hand two wins!"
 }
 else {
-  console.log("You can't use that tool to win.")
+  return "You can't use that tool to win."
 }
 }
-rockPaperScissors(scissors, scissors);
+
 
 // the first function called in the program to get an input from the user
 // to run the function use the command: node main.js
@@ -55,17 +60,17 @@ if (typeof describe === 'function') {
 
   // most are notes for human eyes to read, but essentially passes in inputs then compares if the function you built return the expected output.
   describe('#rockPaperScissors()', () => {
-    if ('should detect a tie', () => {
+    it('should detect a tie', () => {
       assert.equal(rockPaperScissors('rock', 'rock'), "It's a tie!");
       assert.equal(rockPaperScissors('paper', 'paper'), "It's a tie!");
       assert.equal(rockPaperScissors('scissors', 'scissors'), "It's a tie!");
     });
-    if ('should detect which hand won', () => {
+    it('should detect which hand won', () => {
       assert.equal(rockPaperScissors('rock', 'paper'), "Hand two wins!");
       assert.equal(rockPaperScissors('paper', 'scissors'), "Hand two wins!");
       assert.equal(rockPaperScissors('rock', 'scissors'), "Hand one wins!");
     });
-    if ('should scrub input to ensure lowercase with "trim"ed whitepace', () => {
+    it('should scrub input to ensure lowercase with "trim"ed whitepace', () => {
       assert.equal(rockPaperScissors('rOcK', ' paper '), "Hand two wins!");
       assert.equal(rockPaperScissors('Paper', 'SCISSORS'), "Hand two wins!");
       assert.equal(rockPaperScissors('rock ', 'sCiSsOrs'), "Hand one wins!");
