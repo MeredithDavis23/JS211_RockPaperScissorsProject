@@ -22,7 +22,7 @@ const rockPaperScissors = (hand1, hand2) => {
   hand1 = hand1.toLowerCase();
   hand2 = hand2.toLowerCase();
   
-if (hand1 === hand2) {
+if (hand1 === hand2 && hand1 !='') {
   return "It's a tie!"
 }
 else if (hand1 === rock && hand2 === scissors || 
@@ -34,6 +34,9 @@ else if (hand1 === rock && hand2 === scissors ||
   hand2 === paper && hand1 === rock || hand2 === scissors && hand1
   === paper) {
     return "Hand two wins!"
+}
+else if (hand1 === '' || hand2 === '') {
+    return "Please enter an input."
 }
 else {
   return "You can't use that tool to win."
@@ -75,6 +78,9 @@ if (typeof describe === 'function') {
       assert.equal(rockPaperScissors('Paper', 'SCISSORS'), "Hand two wins!");
       assert.equal(rockPaperScissors('rock ', 'sCiSsOrs'), "Hand one wins!");
     });
+    it('if loser presses enter with no input', () => {
+      assert.equal(rockPaperScissors('', ''), "Please enter an input.");
+    })
   });
 } else {
 
