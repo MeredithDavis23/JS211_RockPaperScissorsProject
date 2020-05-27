@@ -80,7 +80,10 @@ if (typeof describe === 'function') {
     });
     it('if loser presses enter with no input', () => {
       assert.equal(rockPaperScissors('', ''), "Please enter an input.");
-    })
+    }); 
+    it('return text if wrong input is put in', () => {
+      assert.equal(rockPaperScissors('rock', 'shrub'), "Not a valid weapon!");
+      });
   });
 } else {
 
