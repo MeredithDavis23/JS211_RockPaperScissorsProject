@@ -38,6 +38,9 @@ else if (hand1 === rock && hand2 === scissors ||
 else if (hand1 === '' || hand2 === '') {
     return "Please enter an input."
 }
+else if (hand1 !== rock || hand1 !== paper || hand1 !== scissors || hand2 !== rock || hand2 !== paper || hand2 !== scissors) {
+  return "Not a valid weapon, this isn't Clue."
+}
 else {
   return "You can't use that tool to win."
 }
@@ -82,7 +85,7 @@ if (typeof describe === 'function') {
       assert.equal(rockPaperScissors('', ''), "Please enter an input.");
     }); 
     it('return text if wrong input is put in', () => {
-      assert.equal(rockPaperScissors('rock', 'shrub'), "Not a valid weapon!");
+      assert.equal(rockPaperScissors('rock', 'shrub'), "Not a valid weapon, this isn't Clue.");
       });
   });
 } else {
